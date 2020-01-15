@@ -69,7 +69,7 @@ public class FlowLayout extends ViewGroup {
             measureChild(child, widthMeasureSpec, heightMeasureSpec);   //测量子View宽高
             MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();   //子View的LayoutParams是由包含它的父容器决定的
             int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
-            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.topMargin;
+            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
 
             //不换行
             if (lineWidth + childWidth + getPaddingLeft() + getPaddingRight() <= widthSize) {
