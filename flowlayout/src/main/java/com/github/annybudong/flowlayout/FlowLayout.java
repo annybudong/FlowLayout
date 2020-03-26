@@ -1,4 +1,4 @@
-package com.github.annybudong.view;
+package com.github.annybudong.flowlayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
