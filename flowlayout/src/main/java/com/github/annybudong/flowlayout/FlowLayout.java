@@ -79,7 +79,6 @@ public class FlowLayout extends ViewGroup {
                 continue;
             }
             measureChild(child, widthMeasureSpec, heightMeasureSpec);   //测量子View宽高
-            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();   //子View的LayoutParams是由包含它的父容器决定的
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
 
@@ -103,7 +102,6 @@ public class FlowLayout extends ViewGroup {
             }
         }
 
-        System.out.println("zhaomin widthSize=" + widthSize + " heightSize=" + heightSize);
         setMeasuredDimension(
                 widthMode == MeasureSpec.EXACTLY ? widthSize : width + getPaddingLeft() + getPaddingRight(),       //如果宽度模式为EXACTLY，择直接取容器的宽度，否则取我们测量出的宽度
                 heightMode == MeasureSpec.EXACTLY ? heightSize : height + getPaddingTop() + getPaddingBottom());   //如果高度模式为EXACTLY，择直接取容器的高度，否则取我们测量出的高度
@@ -127,7 +125,6 @@ public class FlowLayout extends ViewGroup {
             if (child.getVisibility() == View.GONE) {
                 continue;
             }
-            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
 
@@ -165,7 +162,6 @@ public class FlowLayout extends ViewGroup {
                     continue;
                 }
 
-                MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
                 int lc = left;
                 int tc = top;
                 int rc = lc + child.getMeasuredWidth();
@@ -179,10 +175,5 @@ public class FlowLayout extends ViewGroup {
             left = getPaddingLeft();
             top += lineHeight;
         }
-    }
-
-    @Override
-    public LayoutParams generateLayoutParams(AttributeSet attrs) {
-        return new MarginLayoutParams(getContext(), attrs);
     }
 }

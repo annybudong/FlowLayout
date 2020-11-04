@@ -3,7 +3,7 @@
 
 ## 使用
 
-1. 直接在FlowLayout里面嵌入普通View，就可达到热门标签效果
+1. 直接在FlowLayout里面嵌入普通View或者在代码里addView，就可达到热门标签效果
 2. 通过`flow_childSpacing`和`flow_rowSpacing`两个属性来控制横向间距和行间距
 
 ```
