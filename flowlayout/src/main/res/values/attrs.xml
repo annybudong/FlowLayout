@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlowLayout">
+        <!-- child之间横向间距, 单位dp-->
+        <attr name="flow_childSpacing" format="dimension" />
+
+        <!-- 行间距,单位dp-->
+        <attr name="flow_rowSpacing" format="dimension" />
+    </declare-styleable>
+</resources>

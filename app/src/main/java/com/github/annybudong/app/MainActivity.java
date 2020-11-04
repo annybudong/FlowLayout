@@ -1,4 +1,4 @@
-package com.github.annybudong.flowlayout;
+package com.github.annybudong.app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

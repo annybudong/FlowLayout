@@ -1,83 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.github.annybudong.view.FlowLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_width="wrap_content"
+    <com.github.annybudong.flowlayout.FlowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:flow_childSpacing="880px">
+        <TextView
+            android:background="#ff0000"
+            android:layout_width="100px"
+            android:singleLine="true"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30px"
             android:textColor="@android:color/black"
             android:text="Hello"/>
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:background="#00ff00"
+            android:layout_width="100px"
+            android:singleLine="true"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30px"
-            android:textColor="@android:color/black"
-            android:text="ggegegg"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30px"
-            android:textColor="@android:color/black"
-            android:text="各个恶搞文"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30px"
-            android:textColor="@android:color/black"
-            android:text="咯咯咯"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30px"
             android:textColor="@android:color/black"
             android:text="啾啾啾啾啾啾"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="Android"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="个交个朋几罐啤酒哦哦跑"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="咯咯咯"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="看看看"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="来了个可供课哦"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:visibility="gone"
-            android:text="Hello1"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:visibility="visible"
-            android:text="Hello2"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:visibility="visible"
-            android:text="Hello3"/>
 
-    </com.github.annybudong.view.FlowLayout>
+
+        <TextView
+            android:background="#ff0000"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="各个恶搞文"/>
+<!--        <TextView-->
+<!--            android:background="#ff0000"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:text="咯咯咯"/>-->
+<!--        <TextView-->
+<!--            android:background="#ff0000"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:text="啾啾啾啾啾啾"/>-->
+
+
+<!--        <TextView-->
+<!--            android:background="#ff0000"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:text="Android"/>-->
+<!--        <TextView-->
+<!--            android:background="#ff0000"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:text="个交个朋几罐啤酒哦哦跑"/>-->
+<!--        <TextView-->
+<!--            android:background="#ff0000"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:text="咯咯咯"/>-->
+
+    </com.github.annybudong.flowlayout.FlowLayout>
 </RelativeLayout>

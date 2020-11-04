@@ -1,6 +1,7 @@
 package com.github.annybudong.flowlayout;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,9 @@ public class FlowLayout extends ViewGroup {
     //存储每一行的高度
     private List<Integer> lineHeights = new ArrayList<>();
 
+    private int childSpacing;
+    private int rowSpacing;
+
     //直接new时会调用
     public FlowLayout(Context context) {
         this(context, null);
@@ -36,6 +40,14 @@ public class FlowLayout extends ViewGroup {
     //从布局文件加载时（有自定义属性）
     public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
+
+    private void init(Context context, AttributeSet attrs) {
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.FlowLayout);
+        childSpacing = ta.getDimensionPixelSize(R.styleable.FlowLayout_flow_childSpacing, 0);
+        rowSpacing = ta.getDimensionPixelSize(R.styleable.FlowLayout_flow_rowSpacing, 0);
+        ta.recycle();
     }
 
     /**
@@ -68,16 +80,16 @@ public class FlowLayout extends ViewGroup {
             }
             measureChild(child, widthMeasureSpec, heightMeasureSpec);   //测量子View宽高
             MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();   //子View的LayoutParams是由包含它的父容器决定的
-            int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
-            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
+            int childWidth = child.getMeasuredWidth();
+            int childHeight = child.getMeasuredHeight();
 
             //不换行
             if (lineWidth + childWidth + getPaddingLeft() + getPaddingRight() <= widthSize) {
-                lineWidth += childWidth;                            //行宽累加
+                lineWidth = lineWidth + childSpacing + childWidth;  //行宽累加
                 lineHeight = Math.max(lineHeight, childHeight);     //得到当前行最大的高度
             } else {
                 width = Math.max(width, lineWidth);
-                height += lineHeight;                               //换行后FlowLayout的高度需要增加
+                height = height + lineHeight + rowSpacing;           //换行后FlowLayout的高度需要增加
                 lineWidth = childWidth;                             //换行后行宽为换行后的第一个child的宽度
                 lineHeight = childHeight;                           //换行后行高为换行后的第一个child的高度
             }
@@ -91,6 +103,7 @@ public class FlowLayout extends ViewGroup {
             }
         }
 
+        System.out.println("zhaomin widthSize=" + widthSize + " heightSize=" + heightSize);
         setMeasuredDimension(
                 widthMode == MeasureSpec.EXACTLY ? widthSize : width + getPaddingLeft() + getPaddingRight(),       //如果宽度模式为EXACTLY，择直接取容器的宽度，否则取我们测量出的宽度
                 heightMode == MeasureSpec.EXACTLY ? heightSize : height + getPaddingTop() + getPaddingBottom());   //如果高度模式为EXACTLY，择直接取容器的高度，否则取我们测量出的高度
@@ -119,16 +132,17 @@ public class FlowLayout extends ViewGroup {
             int childHeight = child.getMeasuredHeight();
 
             //换行
-            if (lineWidth + childWidth + lp.leftMargin + lp.rightMargin + getPaddingLeft() + getPaddingRight() > width) {
-                lineHeights.add(lineHeight);
+            //换行
+            if (lineWidth + childWidth + getPaddingLeft() + getPaddingRight() > width) {
+                lineHeights.add(lineHeight + rowSpacing);
                 allViews.add(lineViews);
                 lineWidth = 0;
-                lineHeight = childHeight + lp.topMargin + lp.bottomMargin;      //重置
+                lineHeight = childHeight;      //重置
                 lineViews = new ArrayList<>();                                  //重置lineViews集合
             }
 
-            lineWidth += childWidth + lp.leftMargin + lp.rightMargin;
-            lineHeight = Math.max(lineHeight, childHeight + lp.topMargin + lp.bottomMargin);
+            lineWidth += childWidth + childSpacing;
+            lineHeight = Math.max(lineHeight, childHeight);
             lineViews.add(child);
         } //for end
 
@@ -152,14 +166,14 @@ public class FlowLayout extends ViewGroup {
                 }
 
                 MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
-                int lc = left + lp.leftMargin;
-                int tc = top + lp.topMargin;
+                int lc = left;
+                int tc = top;
                 int rc = lc + child.getMeasuredWidth();
                 int bc = tc + child.getMeasuredHeight();
 
                 //子View布局
                 child.layout(lc, tc, rc, bc);
-                left += child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+                left += child.getMeasuredWidth() + childSpacing;
             }
 
             left = getPaddingLeft();
