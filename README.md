@@ -1,14 +1,18 @@
 # FlowLayout-安卓热门标签
 
 
-## 配置xml
+## 使用
 
-使用很简单，直接在FlowLayout里面嵌入普通View，就可达到热门标签效果
+1. 直接在FlowLayout里面嵌入普通View，就可达到热门标签效果
+2. 通过`flow_childSpacing`和`flow_rowSpacing`两个属性来控制横向间距和行间距
 
 ```
 <com.github.annybudong.view.FlowLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:flow_childSpacing="10dp"
+        app:flow_rowSpacing="20dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
